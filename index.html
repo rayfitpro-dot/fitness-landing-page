@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Iron Dad Method | Fitness Coaching for Busy Dads</title>
+  <title>Iron Dad Method | 90-Day Dad Rebuild</title>
   <meta
     name="description"
-    content="A simple, realistic fitness coaching program built for busy dads who want to get stronger, leaner, and more energized without living in the gym."
+    content="A 90-day coaching program for dads who want to get leaner, stronger, more energized, and back in control. Built for real life. Limited to 10 founding members."
   />
   <style>
     :root {
@@ -14,19 +14,18 @@
       --surface: #12161b;
       --surface-2: #1a2028;
       --text: #e9edf2;
-      --muted: #adb7c3;
-      --accent: #d0ff3e;
-      --accent-dark: #adcf38;
-      --border: #2a323d;
-      --max: 1080px;
-      --radius: 16px;
-      --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+      --muted: #aab7c3;
+      --line: rgba(255, 255, 255, 0.08);
+      --accent: #d8ff3e;
+      --accent-dark: #0c1110;
+      --accent-2: #7dd3fc;
+      --max-width: 1180px;
+      --radius: 22px;
+      --shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
     }
 
     * {
       box-sizing: border-box;
-      margin: 0;
-      padding: 0;
     }
 
     html {
@@ -34,427 +33,823 @@
     }
 
     body {
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-      background: linear-gradient(180deg, #090b0e 0%, #0d1116 100%);
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 80% 10%, rgba(216, 255, 62, 0.16), transparent 20%),
+        radial-gradient(circle at 20% 0%, rgba(125, 211, 252, 0.10), transparent 20%),
+        var(--bg);
       color: var(--text);
-      line-height: 1.55;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
     }
 
     .container {
-      width: min(100% - 2rem, var(--max));
-      margin-inline: auto;
+      width: min(100% - 2rem, var(--max-width));
+      margin: 0 auto;
     }
 
-    .section {
-      padding: 4rem 0;
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(14px);
+      background: rgba(11, 13, 16, 0.72);
+      border-bottom: 1px solid var(--line);
     }
 
-    .eyebrow {
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1rem 0;
+    }
+
+    .brand {
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      font-size: 1rem;
+    }
+
+    .brand span {
       color: var(--accent);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      font-size: 0.76rem;
-      font-weight: 700;
-      margin-bottom: 0.75rem;
     }
 
-    h1,
-    h2,
-    h3 {
-      line-height: 1.2;
-      margin-bottom: 1rem;
-    }
-
-    h1 {
-      font-size: clamp(1.9rem, 6vw, 3.2rem);
-      max-width: 12ch;
-    }
-
-    h2 {
-      font-size: clamp(1.5rem, 5vw, 2.2rem);
-    }
-
-    p {
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
       color: var(--muted);
-      margin-bottom: 1rem;
+      font-size: 0.95rem;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
     }
 
     .btn {
-      display: inline-block;
-      text-decoration: none;
-      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.95rem 1.3rem;
       border-radius: 999px;
+      font-weight: 700;
+      transition: 0.2s ease;
       border: 1px solid transparent;
-      padding: 0.85rem 1.2rem;
-      transition: all 0.2s ease;
-      text-align: center;
+      cursor: pointer;
     }
 
     .btn-primary {
       background: var(--accent);
-      color: #171d06;
-      box-shadow: 0 8px 24px rgba(208, 255, 62, 0.25);
+      color: #0c1110;
+      box-shadow: 0 10px 28px rgba(216, 255, 62, 0.18);
     }
 
-    .btn-primary:hover,
-    .btn-primary:focus-visible {
-      background: var(--accent-dark);
+    .btn-primary:hover {
       transform: translateY(-1px);
+      filter: brightness(0.98);
     }
 
-    .btn-ghost {
-      border-color: var(--border);
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.03);
       color: var(--text);
-      background: rgba(255, 255, 255, 0.02);
+      border-color: var(--line);
     }
 
-    .btn-ghost:hover,
-    .btn-ghost:focus-visible {
-      border-color: var(--accent);
-      color: var(--accent);
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.06);
     }
 
     .hero {
-      padding: 5rem 0 4rem;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-      background:
-        radial-gradient(circle at 85% 10%, rgba(208, 255, 62, 0.15) 0%, transparent 32%),
-        radial-gradient(circle at 20% 10%, rgba(120, 130, 255, 0.14) 0%, transparent 32%);
+      padding: 6rem 0 4rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      color: var(--accent);
+      font-weight: 800;
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 5vw, 4.8rem);
+      line-height: 1.02;
+      letter-spacing: -0.04em;
+      margin: 0 0 1rem;
+      max-width: 12ch;
     }
 
     .hero p {
-      max-width: 50ch;
-      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+      color: var(--muted);
+      max-width: 58ch;
+      margin: 0 0 1.5rem;
     }
 
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
+      gap: 0.9rem;
+      margin: 1.5rem 0 1rem;
+    }
+
+    .hero-proof {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .hero-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.015));
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: 1.5rem;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .hero-card-inner {
+      background:
+        radial-gradient(circle at 75% 10%, rgba(216,255,62,0.22), transparent 25%),
+        radial-gradient(circle at 25% 20%, rgba(125,211,252,0.12), transparent 22%),
+        #0d1117;
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 22px;
+      padding: 2rem;
+      min-height: 460px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .card-tag {
+      color: var(--accent);
+      text-transform: uppercase;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      font-weight: 800;
+    }
+
+    .card-headline {
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      line-height: 1.04;
+      letter-spacing: -0.04em;
+      margin: 0.8rem 0 1rem;
+      max-width: 10ch;
+      font-weight: 800;
+    }
+
+    .card-copy {
+      color: var(--muted);
+      max-width: 34ch;
+      font-size: 0.98rem;
+    }
+
+    .stacked-buttons {
+      display: flex;
       gap: 0.75rem;
-      margin-bottom: 1.25rem;
+      flex-wrap: wrap;
+      margin-top: 1.5rem;
     }
 
-    .proof {
-      color: #c2ccd7;
-      font-size: 0.94rem;
+    .section {
+      padding: 4.5rem 0;
     }
 
-    .grid {
+    .section-head {
+      max-width: 780px;
+      margin-bottom: 2rem;
+    }
+
+    .section-head h2 {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+      margin: 0 0 0.8rem;
+    }
+
+    .section-head p {
+      color: var(--muted);
+      margin: 0;
+      font-size: 1.05rem;
+    }
+
+    .grid-2 {
       display: grid;
-      gap: 1rem;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.25rem;
     }
 
     .card {
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
-      border: 1px solid var(--border);
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.015));
+      border: 1px solid var(--line);
       border-radius: var(--radius);
-      padding: 1.2rem;
+      padding: 1.4rem;
       box-shadow: var(--shadow);
     }
 
     .card h3 {
-      font-size: 1.05rem;
-      margin-bottom: 0.6rem;
+      margin: 0 0 0.6rem;
+      font-size: 1.15rem;
+      letter-spacing: -0.02em;
     }
 
-    .list {
-      list-style: none;
-      display: grid;
-      gap: 0.65rem;
-    }
-
-    .list li {
-      display: flex;
-      align-items: flex-start;
-      gap: 0.55rem;
-      color: #d8e0e8;
-    }
-
-    .list li::before {
-      content: "✔";
-      color: var(--accent);
-      font-weight: 700;
-      margin-top: 0.05rem;
-    }
-
-    .story {
-      padding: 1.4rem;
-      border-left: 3px solid var(--accent);
-      border-radius: 10px;
-      background: rgba(208, 255, 62, 0.04);
-    }
-
-    .faq-item {
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      background: var(--surface);
-      overflow: hidden;
-    }
-
-    .faq-question {
-      width: 100%;
-      background: transparent;
-      color: var(--text);
-      border: none;
-      text-align: left;
-      font-size: 1rem;
-      font-weight: 700;
-      padding: 1rem;
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      gap: 1rem;
-    }
-
-    .faq-question span {
-      color: var(--accent);
-      transition: transform 0.2s ease;
-    }
-
-    .faq-answer {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.25s ease;
-      padding: 0 1rem;
+    .card p {
+      margin: 0;
       color: var(--muted);
     }
 
-    .faq-item.active .faq-answer {
-      max-height: 220px;
-      padding: 0 1rem 1rem;
+    .story {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 1.5rem;
+      align-items: start;
     }
 
-    .faq-item.active .faq-question span {
-      transform: rotate(45deg);
+    .story-quote {
+      font-size: clamp(1.6rem, 3vw, 2.3rem);
+      line-height: 1.15;
+      letter-spacing: -0.04em;
+      font-weight: 800;
+      margin: 0;
     }
 
-    .final-cta {
+    .story-quote span {
+      color: var(--accent);
+    }
+
+    .story-copy p {
+      color: var(--muted);
+      margin-top: 0;
+      margin-bottom: 1rem;
+      font-size: 1.03rem;
+    }
+
+    .bullets {
+      display: grid;
+      gap: 0.9rem;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .bullets li {
+      display: flex;
+      gap: 0.8rem;
+      align-items: flex-start;
+      background: rgba(255,255,255,0.025);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 1rem 1rem 1rem 0.95rem;
+      color: var(--text);
+    }
+
+    .bullet-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: var(--accent);
+      margin-top: 0.45rem;
+      flex: 0 0 auto;
+    }
+
+    .pricing-wrap {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 1.5rem;
+      align-items: stretch;
+    }
+
+    .price-card {
+      background:
+        radial-gradient(circle at 85% 10%, rgba(216,255,62,0.15), transparent 24%),
+        linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: 1.7rem;
+      box-shadow: var(--shadow);
+    }
+
+    .price-tag {
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.78rem;
+      font-weight: 800;
+    }
+
+    .price {
+      font-size: clamp(3rem, 6vw, 4.8rem);
+      line-height: 1;
+      letter-spacing: -0.06em;
+      font-weight: 800;
+      margin: 0.7rem 0;
+    }
+
+    .price-sub {
+      color: var(--muted);
+      font-size: 1rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .price-list {
+      display: grid;
+      gap: 0.8rem;
+      margin: 1.25rem 0 1.5rem;
+      padding: 0;
+      list-style: none;
+    }
+
+    .price-list li {
+      color: var(--text);
+      padding-left: 1.3rem;
+      position: relative;
+    }
+
+    .price-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: 800;
+    }
+
+    .faq {
+      display: grid;
+      gap: 1rem;
+    }
+
+    details {
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.02);
+      border-radius: 18px;
+      padding: 1rem 1.1rem;
+    }
+
+    summary {
+      cursor: pointer;
+      font-weight: 700;
+      list-style: none;
+    }
+
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    details p {
+      color: var(--muted);
+      margin: 0.8rem 0 0;
+    }
+
+    .cta-band {
+      padding: 4rem 0 6rem;
+    }
+
+    .cta-box {
+      background:
+        radial-gradient(circle at 80% 15%, rgba(216,255,62,0.18), transparent 20%),
+        linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      padding: 2rem;
       text-align: center;
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
-      padding-top: 4rem;
-      padding-bottom: 5rem;
+      box-shadow: var(--shadow);
     }
 
-    .final-cta p {
-      margin-inline: auto;
-      max-width: 58ch;
+    .cta-box h2 {
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+      margin: 0 0 0.8rem;
     }
 
-    footer {
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
-      color: #8e9bab;
-      text-align: center;
-      font-size: 0.86rem;
-      padding: 1.2rem;
+    .cta-box p {
+      color: var(--muted);
+      max-width: 60ch;
+      margin: 0 auto 1.5rem;
+      font-size: 1.05rem;
     }
 
-    @media (min-width: 700px) {
-      .grid-2 {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+    .footer {
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      padding: 1.5rem 0 2rem;
+      font-size: 0.95rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 960px) {
+      .hero-grid,
+      .grid-2,
+      .story,
+      .pricing-wrap {
+        grid-template-columns: 1fr;
       }
 
-      .grid-3 {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+      .nav-links {
+        display: none;
       }
 
       .hero {
-        padding-top: 6.5rem;
+        padding-top: 4.5rem;
+      }
+
+      .hero-card-inner {
+        min-height: auto;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero-actions,
+      .stacked-buttons {
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .section {
+        padding: 3.5rem 0;
       }
     }
   </style>
 </head>
 <body>
-  <header class="hero">
-    <div class="container">
-      <p class="eyebrow">Fitness Coaching for Busy Dads</p>
-      <h1>Get Lean, Strong, and Confident—Without Living in the Gym.</h1>
-      <p>
-        The Iron Dad Method is a practical coaching program designed for men balancing work,
-        fatherhood, and real life. Simple training. Sustainable nutrition. Zero fluff.
-      </p>
-      <div class="hero-actions">
-        <a class="btn btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSeZBR-srkcE1hplrinC4aJuiQijAFVaRkQl4wIWbs1C1e8YBA/viewform?usp=header">Apply for Coaching</a>
-        <a class="btn btn-ghost" href="#program">See the Program</a>
-      </div>
-      <p class="proof">Built for dads with limited time: 3–4 workouts/week, 30–45 minutes each.</p>
+  <header class="nav">
+    <div class="container nav-inner">
+      <a href="#top" class="brand">Iron Dad <span>Method</span></a>
+      <nav class="nav-links">
+        <a href="#story">Why This Exists</a>
+        <a href="#included">What You Get</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+      </nav>
     </div>
   </header>
 
-  <main>
-    <section class="section" id="for">
-      <div class="container">
-        <p class="eyebrow">Who It’s For</p>
-        <h2>If You’re a Busy Dad Who’s Tired of Starting Over, This Is for You.</h2>
-        <div class="grid grid-2">
-          <article class="card">
-            <h3>You’ll fit right in if you...</h3>
-            <ul class="list">
-              <li>Have a packed schedule and need efficient workouts.</li>
-              <li>Want to lose fat without extreme diets.</li>
-              <li>Need more energy for work and family.</li>
-              <li>Value a clear plan over random online advice.</li>
-            </ul>
-          </article>
-          <article class="card">
-            <h3>This is not for you if...</h3>
-            <ul class="list">
-              <li>You want quick-fix hacks with no consistency.</li>
-              <li>You expect 2-hour daily workouts.</li>
-              <li>You’re looking for bodybuilding prep coaching.</li>
-              <li>You don’t want accountability.</li>
-            </ul>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="program">
-      <div class="container">
-        <p class="eyebrow">Program Breakdown</p>
-        <h2>A Simple System You Can Actually Stick To.</h2>
-        <div class="grid grid-3">
-          <article class="card">
-            <h3>1) Training Plan</h3>
-            <p>
-              Three to four weekly strength-focused sessions with built-in progressions, all tailored
-              to your schedule and available equipment.
-            </p>
-          </article>
-          <article class="card">
-            <h3>2) Nutrition Framework</h3>
-            <p>
-              Easy meal structure, portion guidance, and habit-based nutrition so you can eat with
-              your family and still get results.
-            </p>
-          </article>
-          <article class="card">
-            <h3>3) Accountability Coaching</h3>
-            <p>
-              Weekly check-ins, progress tracking, and fast feedback so you stay consistent even when
-              life gets hectic.
-            </p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="benefits">
-      <div class="container">
-        <p class="eyebrow">Benefits</p>
-        <h2>What You’ll Notice in the First 90 Days</h2>
-        <div class="grid grid-2">
-          <article class="card">
-            <ul class="list">
-              <li>Lower body fat and a stronger, more athletic build.</li>
-              <li>More daily energy without relying on caffeine all day.</li>
-              <li>Better sleep and improved stress management.</li>
-              <li>Increased confidence at work, at home, and in your body.</li>
-            </ul>
-          </article>
-          <article class="card">
-            <ul class="list">
-              <li>Simple routines that fit around family commitments.</li>
-              <li>No confusing programs, no extremes, no guesswork.</li>
-              <li>A repeatable system that lasts beyond motivation.</li>
-              <li>Progress you can maintain year-round.</li>
-            </ul>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="founder">
-      <div class="container">
-        <p class="eyebrow">Founder Story</p>
-        <h2>Built by a Dad Who Lived the Same Chaos.</h2>
-        <div class="story">
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Fitness Coaching for Busy Dads</div>
+          <h1>Rebuild your body, energy, and confidence in 90 days.</h1>
           <p>
-           I'm Ray Aguilar a father of six working full-time, rebuilding my own health while managing real life responsibilities.This program is built for men like me—who don’t have unlimited time, but still want to be strong, disciplined, and confident.
+            A coaching program for dads who are done feeling tired, soft, inconsistent,
+            and out of control. Built for real life. Limited to 10 founding members.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="YOUR_GOOGLE_FORM_LINK_HERE" target="_blank" rel="noopener noreferrer">
+              Join the First 10 Dads
+            </a>
+            <a class="btn btn-secondary" href="#included">
+              See What’s Included
+            </a>
+          </div>
+
+          <div class="hero-proof">
+            Training. Nutrition. Accountability. Brotherhood. Weekly local rucks and hill sessions for nearby dads.
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <div class="hero-card-inner">
+            <div>
+              <div class="card-tag">Founding Cohort</div>
+              <div class="card-headline">Get leaner, stronger, and back in control.</div>
+              <div class="card-copy">
+                This is not another random workout plan. This is a 90-day rebuild for dads
+                who want structure, momentum, and a plan they can actually stick to.
+              </div>
+            </div>
+
+            <div>
+              <div class="stacked-buttons">
+                <a class="btn btn-primary" href="YOUR_GOOGLE_FORM_LINK_HERE" target="_blank" rel="noopener noreferrer">
+                  Apply for Coaching
+                </a>
+                <a class="btn btn-secondary" href="#pricing">
+                  View Pricing
+                </a>
+              </div>
+              <p class="hero-proof" style="margin-top: 1rem;">
+                Built for dads with limited time: 3–4 workouts per week, 30–45 minutes each.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2>You are not lazy. You are carrying a lot.</h2>
+          <p>
+            Somewhere between work, kids, responsibility, bad sleep, stress, and putting yourself last,
+            your body changed. Your energy dropped. Your confidence took a hit. You stopped feeling like yourself.
+          </p>
+        </div>
+
+        <div class="grid-2">
+          <div class="card">
+            <h3>What most dads feel</h3>
+            <p>
+              Tired. Overweight. Inconsistent. Starting and stopping over and over. Knowing what to do,
+              but not doing it long enough to see real change.
+            </p>
+          </div>
+          <div class="card">
+            <h3>What most dads actually need</h3>
+            <p>
+              Not more information. A clear plan. Accountability. Simplicity. A real structure that fits life
+              when life is busy.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="story">
+      <div class="container story">
+        <div class="card">
+          <p class="story-quote">
+            I built this for dads who are ready to <span>stop drifting</span> and take back control.
+          </p>
+        </div>
+
+        <div class="card story-copy">
+          <h3>Why I created this program</h3>
+          <p>
+            I created this because I know what it feels like to carry a lot and slowly drift away from yourself.
           </p>
           <p>
-            So I built a better approach: short, focused training, practical nutrition, and consistent
-            accountability. The goal isn’t perfection—it’s progress you can sustain while being present
-            for your family.
+            As dads, we show up for everybody. We work. We provide. We handle stress. We try to lead our family well.
+            But somewhere in the middle of that, a lot of us lose our edge physically and mentally.
           </p>
-          <p><strong>— Coach Ray Aguilar, Founder</strong></p>
+          <p>
+            We start feeling tired more often. We stop moving like we used to. We lose confidence. We tell ourselves
+            we will lock back in soon, but soon keeps getting pushed back.
+          </p>
+          <p>
+            This program came from that place. Not from perfection. From experience. From knowing what it feels like
+            to want your energy back, your discipline back, and to feel proud of the man in the mirror again.
+          </p>
+          <p>
+            I built this for dads who are ready to stop putting themselves last and finally take back control of
+            their body, habits, and confidence. Because when a dad gets stronger, more disciplined, and more energized,
+            it does not just impact him. It impacts his whole family.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2>This is not about perfection. It is about getting back in control.</h2>
+          <p>
+            The Iron Dad Method is a 90-day rebuild for dads who want to get leaner, stronger, more disciplined,
+            and more confident again without trying to live in the gym.
+          </p>
+        </div>
+
+        <ul class="bullets">
+          <li><span class="bullet-dot"></span><span>You are a dad who feels out of shape and wants to change that.</span></li>
+          <li><span class="bullet-dot"></span><span>You are tired of starting and stopping.</span></li>
+          <li><span class="bullet-dot"></span><span>You want a plan that fits real life, not fantasy.</span></li>
+          <li><span class="bullet-dot"></span><span>You want more energy, confidence, and discipline.</span></li>
+          <li><span class="bullet-dot"></span><span>You want to lead your family better by leading yourself better.</span></li>
+          <li><span class="bullet-dot"></span><span>You are done making excuses and ready to move.</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" id="included">
+      <div class="container">
+        <div class="section-head">
+          <h2>What’s included in the 90-Day Dad Rebuild</h2>
+          <p>
+            This is a coaching container, not just a PDF. The goal is to help dads build real momentum and keep it.
+          </p>
+        </div>
+
+        <div class="grid-2">
+          <div class="card">
+            <h3>90-day training system</h3>
+            <p>
+              A simple, effective plan built to help you get leaner, stronger, and more athletic again with 3–4 weekly sessions.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Real-world nutrition guidance</h3>
+            <p>
+              Protein-first, whole-food focused nutrition that helps you stay full, consistent, and in control.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Weekly accountability</h3>
+            <p>
+              A consistent check-in rhythm to keep momentum high and stop you from falling off after one hard week.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Small group brotherhood</h3>
+            <p>
+              You will be surrounded by other dads who are getting after it too. Small enough to matter. Strong enough to push you.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Weekly local ruck and hill sessions</h3>
+            <p>
+              For local dads, one weekly meetup to build fitness, toughness, camaraderie, and momentum in person.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Progress tracking + direct guidance</h3>
+            <p>
+              Clear ways to measure wins in body composition, consistency, strength, and energy with guidance from me throughout the program.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2>Most dads do not need more information. They need structure.</h2>
+          <p>
+            You probably already know the basics. Train. Eat better. Walk more. Stop overeating on the weekends.
+            The problem is not information. The problem is execution.
+          </p>
+        </div>
+
+        <div class="grid-2">
+          <div class="card">
+            <h3>What this program solves</h3>
+            <p>
+              It gives you a clear structure, simple standards, accountability, and a small group of men moving in the same direction.
+            </p>
+          </div>
+          <div class="card">
+            <h3>What the goal is after 90 days</h3>
+            <p>
+              Feel stronger. Look leaner. Move better. Have more energy. Trust yourself more. Build momentum you can actually sustain.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="pricing">
+      <div class="container pricing-wrap">
+        <div class="price-card">
+          <div class="price-tag">Founding Member Pricing</div>
+          <div class="price">$297</div>
+          <div class="price-sub">One-time payment for the full 90-day program</div>
+
+          <ul class="price-list">
+            <li>Limited to 10 dads only</li>
+            <li>Founding member rate</li>
+            <li>Future cohorts will increase in price</li>
+            <li>Built for serious buy-in and real change</li>
+          </ul>
+
+          <a class="btn btn-primary" href="YOUR_GOOGLE_FORM_LINK_HERE" target="_blank" rel="noopener noreferrer">
+            Claim Your Spot
+          </a>
+        </div>
+
+        <div class="card">
+          <h3>Need flexibility?</h3>
+          <p style="margin-bottom: 1rem; color: var(--muted);">
+            You can also join with 2 payments of <strong style="color: var(--text);">$167</strong>.
+          </p>
+
+          <h3>Why I’m keeping this small</h3>
+          <p style="margin-bottom: 1rem;">
+            This first cohort is capped at 10 dads on purpose. I want the standard high, the support personal,
+            and the experience strong.
+          </p>
+
+          <h3>Who this is for</h3>
+          <p style="margin-bottom: 1rem;">
+            Dads who are serious about changing how they look, feel, and show up. Not guys looking for another
+            free plan to save and ignore.
+          </p>
+
+          <h3>What happens after this cohort</h3>
+          <p>
+            Price goes up. Standards stay high. The founding group gets the best rate this program will ever have.
+          </p>
         </div>
       </div>
     </section>
 
     <section class="section" id="faq">
       <div class="container">
-        <p class="eyebrow">FAQ</p>
-        <h2>Common Questions</h2>
-        <div class="grid">
-          <article class="faq-item">
-            <button class="faq-question" type="button">
-              How much time do I need each week?
-              <span>+</span>
-            </button>
-            <div class="faq-answer">
-              Most dads follow a 3–4 day plan with sessions around 30–45 minutes.
-            </div>
-          </article>
+        <div class="section-head">
+          <h2>Questions dads usually have</h2>
+          <p>
+            Fair questions. Direct answers.
+          </p>
+        </div>
 
-          <article class="faq-item">
-            <button class="faq-question" type="button">
-              Do I need a full gym?
-              <span>+</span>
-            </button>
-            <div class="faq-answer">
-              No. The program can be tailored for home workouts, minimal equipment, or full gym access.
-            </div>
-          </article>
+        <div class="faq">
+          <details>
+            <summary>What if I am out of shape right now?</summary>
+            <p>
+              That is exactly who this is for. You do not need to be in shape to start. You need to start.
+            </p>
+          </details>
 
-          <article class="faq-item">
-            <button class="faq-question" type="button">
-              Is there a strict meal plan?
-              <span>+</span>
-            </button>
-            <div class="faq-answer">
-              No strict meal plan. You’ll get a flexible framework that works with family life and social events.
-            </div>
-          </article>
+          <details>
+            <summary>What if I am busy?</summary>
+            <p>
+              This was built for busy dads. The goal is to make it fit real life, not fight against it.
+            </p>
+          </details>
 
-          <article class="faq-item">
-            <button class="faq-question" type="button">
-              How quickly will I see results?
-              <span>+</span>
-            </button>
-            <div class="faq-answer">
-              Most clients feel better in the first 2–3 weeks and see clear body composition changes within 8–12 weeks.
-            </div>
-          </article>
+          <details>
+            <summary>What if I am not local?</summary>
+            <p>
+              That is fine. The program still works fully online. The local ruck and hill sessions are an added bonus,
+              not the whole offer.
+            </p>
+          </details>
+
+          <details>
+            <summary>What if I have started and stopped before?</summary>
+            <p>
+              That is one of the biggest reasons this exists. The structure and accountability are there to help you stay in it.
+            </p>
+          </details>
+
+          <details>
+            <summary>Why is there a cost?</summary>
+            <p>
+              Because free advice is easy to ignore. The goal is to create real buy-in, commitment, and follow-through.
+            </p>
+          </details>
         </div>
       </div>
     </section>
 
-    <section class="section final-cta" id="apply">
+    <section class="cta-band">
       <div class="container">
-        <p class="eyebrow">Final CTA</p>
-        <h2>Stop Starting Over. Start Building the Body and Energy Your Family Deserves.</h2>
-        <p>
-          If you’re ready for a realistic coaching plan that fits your life as a dad, apply now and
-          let’s build momentum together.
-        </p>
-        <a class="btn btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSeZBR-srkcE1hplrinC4aJuiQijAFVaRkQl4wIWbs1C1e8YBA/viewform?usp=header">Apply Now</a>
+        <div class="cta-box">
+          <h2>You are not finished.</h2>
+          <p>
+            Your best years are not behind you. But they will not come back on their own.
+            If you are ready to get leaner, stronger, more energized, and back in control,
+            this is your move.
+          </p>
+          <div class="hero-actions" style="justify-content: center;">
+            <a class="btn btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSeZBR-srkcE1hplrinC4aJuiQijAFVaRkQl4wIWbs1C1e8YBA/viewform?usp=preview" target="_blank" rel="noopener noreferrer">
+              Join the First 10 Dads
+            </a>
+            <a class="btn btn-secondary" href="#top">
+              Back to Top
+            </a>
+          </div>
+        </div>
       </div>
     </section>
   </main>
 
-  <footer>
-    © <span id="year"></span> Iron Dad Method. All rights reserved.
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>© 2026 Iron Dad Method</div>
+      <div>Built for busy dads who want to take back control.</div>
+    </div>
   </footer>
-
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    document.querySelectorAll('.faq-question').forEach((button) => {
-      button.addEventListener('click', () => {
-        const item = button.closest('.faq-item');
-        item.classList.toggle('active');
-      });
-    });
-  </script>
 </body>
 </html>
