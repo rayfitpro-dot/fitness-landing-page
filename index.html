@@ -3,459 +3,252 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Iron Dad Method | Fitness Coaching for Busy Dads</title>
+  <title>Iron Dad Method | Coaching for Fathers</title>
   <meta
     name="description"
-    content="A simple, realistic fitness coaching program built for busy dads who want to get stronger, leaner, and more energized without living in the gym."
+    content="Iron Dad Method helps fathers rebuild their body, discipline, confidence, and leadership through coaching, accountability, training, and nutrition structure."
   />
   <style>
     :root {
-      --bg: #0b0d10;
+      --bg: #090b0e;
       --surface: #12161b;
       --surface-2: #1a2028;
-      --text: #e9edf2;
-      --muted: #adb7c3;
+      --text: #eef2f7;
+      --muted: #acb6c3;
       --accent: #d0ff3e;
-      --accent-dark: #adcf38;
+      --accent-dark: #a9cf35;
       --border: #2a323d;
       --max: 1080px;
       --radius: 16px;
-      --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
     body {
       font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
       background: linear-gradient(180deg, #090b0e 0%, #0d1116 100%);
       color: var(--text);
       line-height: 1.55;
     }
+    .container { width: min(100% - 2rem, var(--max)); margin-inline: auto; }
+    .section { padding: 4rem 0; }
+    .eyebrow { color: var(--accent); text-transform: uppercase; letter-spacing: .08em; font-size: .76rem; font-weight: 700; margin-bottom: .75rem; }
+    h1, h2, h3 { line-height: 1.2; margin-bottom: 1rem; }
+    h1 { font-size: clamp(1.9rem, 6vw, 3.3rem); max-width: 15ch; }
+    h2 { font-size: clamp(1.5rem, 5vw, 2.2rem); }
+    p { color: var(--muted); margin-bottom: 1rem; }
 
-    .container {
-      width: min(100% - 2rem, var(--max));
-      margin-inline: auto;
-    }
-
-    .section {
-      padding: 4rem 0;
-    }
-
-    .eyebrow {
-      color: var(--accent);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      font-size: 0.76rem;
-      font-weight: 700;
-      margin-bottom: 0.75rem;
-    }
-
-    h1,
-    h2,
-    h3 {
-      line-height: 1.2;
-      margin-bottom: 1rem;
-    }
-
-    h1 {
-      font-size: clamp(1.9rem, 6vw, 3.2rem);
-      max-width: 12ch;
-    }
-
-    h2 {
-      font-size: clamp(1.5rem, 5vw, 2.2rem);
-    }
-
-    p {
-      color: var(--muted);
-      margin-bottom: 1rem;
+    .announcement {
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      background: #060709;
+      color: #d9e3ef;
+      font-size: .9rem;
+      padding: .75rem 0;
     }
 
     .btn {
-      display: inline-block;
-      text-decoration: none;
-      font-weight: 700;
-      border-radius: 999px;
-      border: 1px solid transparent;
-      padding: 0.85rem 1.2rem;
-      transition: all 0.2s ease;
-      text-align: center;
+      display: inline-block; text-decoration: none; font-weight: 700; border-radius: 999px;
+      border: 1px solid transparent; padding: .85rem 1.2rem; transition: all .2s ease; text-align: center;
     }
-
-    .btn-primary {
-      background: var(--accent);
-      color: #171d06;
-      box-shadow: 0 8px 24px rgba(208, 255, 62, 0.25);
-    }
-
-    .btn-primary:hover,
-    .btn-primary:focus-visible {
-      background: var(--accent-dark);
-      transform: translateY(-1px);
-    }
-
-    .btn-ghost {
-      border-color: var(--border);
-      color: var(--text);
-      background: rgba(255, 255, 255, 0.02);
-    }
-
-    .btn-ghost:hover,
-    .btn-ghost:focus-visible {
-      border-color: var(--accent);
-      color: var(--accent);
-    }
+    .btn-primary { background: var(--accent); color: #151c03; box-shadow: 0 8px 24px rgba(208,255,62,.25); }
+    .btn-primary:hover, .btn-primary:focus-visible { background: var(--accent-dark); transform: translateY(-1px); }
+    .btn-ghost { border-color: var(--border); color: var(--text); background: rgba(255,255,255,.02); }
+    .btn-ghost:hover, .btn-ghost:focus-visible { border-color: var(--accent); color: var(--accent); }
 
     .hero {
-      padding: 5rem 0 4rem;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-      background:
-        radial-gradient(circle at 85% 10%, rgba(208, 255, 62, 0.15) 0%, transparent 32%),
-        radial-gradient(circle at 20% 10%, rgba(120, 130, 255, 0.14) 0%, transparent 32%);
+      padding: 4.5rem 0 3.5rem;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+      background: radial-gradient(circle at 85% 5%, rgba(208,255,62,.14) 0%, transparent 30%);
     }
-
-    .hero p {
-      max-width: 50ch;
-      margin-bottom: 1.5rem;
+    .badge {
+      display: inline-block; border: 1px solid var(--border); background: rgba(255,255,255,.02);
+      padding: .3rem .65rem; border-radius: 999px; font-size: .8rem; color: #dce4ec; margin-bottom: 1rem;
     }
+    .hero p { max-width: 62ch; margin-bottom: 1.2rem; }
+    .hero-actions, .cta-actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-bottom: 1rem; }
+    .supporting { color: #c2ccd7; font-size: .94rem; }
 
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      margin-bottom: 1.25rem;
-    }
-
-    .proof {
-      color: #c2ccd7;
-      font-size: 0.94rem;
-    }
-
-    .grid {
-      display: grid;
-      gap: 1rem;
-    }
-
+    .grid { display: grid; gap: 1rem; }
     .card {
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 1.2rem;
-      box-shadow: var(--shadow);
+      background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01));
+      border: 1px solid var(--border); border-radius: var(--radius); padding: 1.2rem;
     }
+    .card h3 { font-size: 1.05rem; margin-bottom: .6rem; }
+    .list { list-style: none; display: grid; gap: .65rem; margin-top: .7rem; }
+    .list li { display: flex; gap: .55rem; color: #d8e0e8; }
+    .list li::before { content: "✔"; color: var(--accent); font-weight: 700; }
 
-    .card h3 {
-      font-size: 1.05rem;
-      margin-bottom: 0.6rem;
-    }
+    .status, .future, .founder, .final-cta { border-top: 1px solid rgba(255,255,255,.06); }
+    .final-cta { text-align: center; }
+    .final-cta p { max-width: 62ch; margin-inline: auto; }
 
-    .list {
-      list-style: none;
-      display: grid;
-      gap: 0.65rem;
-    }
-
-    .list li {
-      display: flex;
-      align-items: flex-start;
-      gap: 0.55rem;
-      color: #d8e0e8;
-    }
-
-    .list li::before {
-      content: "✔";
-      color: var(--accent);
-      font-weight: 700;
-      margin-top: 0.05rem;
-    }
-
-    .story {
-      padding: 1.4rem;
-      border-left: 3px solid var(--accent);
-      border-radius: 10px;
-      background: rgba(208, 255, 62, 0.04);
-    }
-
-    .faq-item {
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      background: var(--surface);
-      overflow: hidden;
-    }
-
-    .faq-question {
-      width: 100%;
-      background: transparent;
-      color: var(--text);
-      border: none;
-      text-align: left;
-      font-size: 1rem;
-      font-weight: 700;
-      padding: 1rem;
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      gap: 1rem;
-    }
-
-    .faq-question span {
-      color: var(--accent);
-      transition: transform 0.2s ease;
-    }
-
-    .faq-answer {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.25s ease;
-      padding: 0 1rem;
-      color: var(--muted);
-    }
-
-    .faq-item.active .faq-answer {
-      max-height: 220px;
-      padding: 0 1rem 1rem;
-    }
-
-    .faq-item.active .faq-question span {
-      transform: rotate(45deg);
-    }
-
-    .final-cta {
-      text-align: center;
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
-      padding-top: 4rem;
-      padding-bottom: 5rem;
-    }
-
-    .final-cta p {
-      margin-inline: auto;
-      max-width: 58ch;
-    }
+    .small-note { font-size: .88rem; color: #95a2b2; margin-top: .8rem; }
 
     footer {
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
-      color: #8e9bab;
-      text-align: center;
-      font-size: 0.86rem;
-      padding: 1.2rem;
+      border-top: 1px solid rgba(255,255,255,.08); color: #8e9bab; text-align: center;
+      font-size: .86rem; padding: 1.2rem;
     }
 
-    @media (min-width: 700px) {
-      .grid-2 {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
+    @media (min-width: 760px) {
+      .grid-2 { grid-template-columns: repeat(2,minmax(0,1fr)); }
+      .grid-4 { grid-template-columns: repeat(2,minmax(0,1fr)); }
+      .hero { padding-top: 5.5rem; }
+    }
 
-      .grid-3 {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-      }
-
-      .hero {
-        padding-top: 6.5rem;
-      }
+    @media (min-width: 980px) {
+      .grid-4 { grid-template-columns: repeat(4,minmax(0,1fr)); }
     }
   </style>
 </head>
 <body>
+  <div class="announcement">
+    <div class="container">Founding cohort is now in progress. August 10 cohort application, 1:1 coaching application, and newsletter are coming soon.</div>
+  </div>
+
   <header class="hero">
     <div class="container">
-      <p class="eyebrow">Fitness Coaching for Busy Dads</p>
-      <h1>Get Lean, Strong, and Confident—Without Living in the Gym.</h1>
-      <p>
-        The Iron Dad Method is a practical coaching program designed for men balancing work,
-        fatherhood, and real life. Simple training. Sustainable nutrition. Zero fluff.
-      </p>
+      <p class="badge">Iron Dad Method</p>
+      <h1>The May 11 Founding Cohort Is Closed.<br />Next Cohort Starts August 10.</h1>
+      <p>Iron Dad Method is a 90-day coaching experience for fathers ready to rebuild their body, discipline, confidence, and leadership — without chasing perfection or disappearing from their family.</p>
       <div class="hero-actions">
-        <a class="btn btn-primary" href="[PASTE YOUR GOOGLE FORM LINK]">Apply for Coaching</a>
-        <a class="btn btn-ghost" href="#program">See the Program</a>
+        <a class="btn btn-primary" href="#coming-soon">1:1 Coaching Application Coming Soon</a>
+        <a class="btn btn-ghost" href="#coming-soon">August 10 Cohort Application Coming Soon</a>
       </div>
-      <p class="proof">Built for dads with limited time: 3–4 workouts/week, 30–45 minutes each.</p>
+      <p class="supporting">The group program reopens August 10. Applications, 1:1 coaching interest, and the newsletter waitlist are coming soon.</p>
     </div>
   </header>
 
   <main>
-    <section class="section" id="for">
+    <section class="section status">
       <div class="container">
-        <p class="eyebrow">Who It’s For</p>
-        <h2>If You’re a Busy Dad Who’s Tired of Starting Over, This Is for You.</h2>
-        <div class="grid grid-2">
-          <article class="card">
-            <h3>You’ll fit right in if you...</h3>
-            <ul class="list">
-              <li>Have a packed schedule and need efficient workouts.</li>
-              <li>Want to lose fat without extreme diets.</li>
-              <li>Need more energy for work and family.</li>
-              <li>Value a clear plan over random online advice.</li>
-            </ul>
-          </article>
-          <article class="card">
-            <h3>This is not for you if...</h3>
-            <ul class="list">
-              <li>You want quick-fix hacks with no consistency.</li>
-              <li>You expect 2-hour daily workouts.</li>
-              <li>You’re looking for bodybuilding prep coaching.</li>
-              <li>You don’t want accountability.</li>
-            </ul>
-          </article>
+        <p class="eyebrow">Current Status</p>
+        <h2>The First Group Has Started.</h2>
+        <p>The May 11 founding group is officially closed.</p>
+        <p>Right now, our first group of committed dads is going through the Iron Dad Method — building structure, training consistently, tightening up nutrition, and raising the standard at home and in life.</p>
+        <p>The next group coaching cohort begins August 10. Until then, 1:1 coaching interest and future cohort applications will be opening soon.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <p class="eyebrow">What It Is</p>
+        <h2>This Is Not Just a Fitness Program.</h2>
+        <p>Iron Dad Method is a standard. A practical coaching system built for fathers who want to lose body fat, build strength, eat with structure, stay accountable, and become more consistent in the areas that matter most.</p>
+        <p>This is for dads who are done starting over.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <p class="eyebrow">Four Pillars</p>
+        <h2>The Standard We Coach</h2>
+        <div class="grid grid-4">
+          <article class="card"><h3>Train With Purpose</h3><p>A clear strength-focused training structure built to help you lose body fat, keep muscle, and rebuild confidence in the gym.</p></article>
+          <article class="card"><h3>Eat With Structure</h3><p>Simple nutrition targets, high-protein meals, and realistic structure that works around family, work, and real life.</p></article>
+          <article class="card"><h3>Stay Accountable</h3><p>Weekly check-ins, progress tracking, and honest coaching so you are not left guessing or drifting.</p></article>
+          <article class="card"><h3>Lead From the Front</h3><p>This is about becoming the kind of man your family can feel: stronger, calmer, more consistent, and more present.</p></article>
         </div>
       </div>
     </section>
 
-    <section class="section" id="program">
+    <section class="section">
       <div class="container">
-        <p class="eyebrow">Program Breakdown</p>
-        <h2>A Simple System You Can Actually Stick To.</h2>
-        <div class="grid grid-3">
-          <article class="card">
-            <h3>1) Training Plan</h3>
-            <p>
-              Three to four weekly strength-focused sessions with built-in progressions, all tailored
-              to your schedule and available equipment.
-            </p>
-          </article>
-          <article class="card">
-            <h3>2) Nutrition Framework</h3>
-            <p>
-              Easy meal structure, portion guidance, and habit-based nutrition so you can eat with
-              your family and still get results.
-            </p>
-          </article>
-          <article class="card">
-            <h3>3) Accountability Coaching</h3>
-            <p>
-              Weekly check-ins, progress tracking, and fast feedback so you stay consistent even when
-              life gets hectic.
-            </p>
-          </article>
+        <p class="eyebrow">Next Group Cohort</p>
+        <h2>Next Cohort Starts August 10.</h2>
+        <p>The next Iron Dad Method group coaching cohort begins August 10. This will be a small group experience built around structure, accountability, training, nutrition, and weekly check-ins.</p>
+        <p>Applications are not open yet. The next cohort application will be available soon.</p>
+        <p>Spots will be limited because the goal is not to pack the group. The goal is to create real progress.</p>
+        <article class="card">
+          <h3>Best Fit For Dads Who Are Ready To:</h3>
+          <ul class="list">
+            <li>Train 3-4 days per week</li><li>Walk more and move daily</li><li>Eat with structure</li><li>Check in weekly</li><li>Be coached honestly</li>
+          </ul>
+        </article>
+        <div style="margin-top:1rem;"><a class="btn btn-primary" href="#coming-soon">August 10 Cohort Application Coming Soon</a></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <p class="eyebrow">Start Before August</p>
+        <h2>Want More Direct Support?</h2>
+        <p>1:1 coaching applications are coming soon for dads who want a more personal level of support.</p>
+        <p>This will be for men who want custom training guidance, nutrition structure, weekly accountability, honest feedback, and a clear plan built around real life.</p>
+        <article class="card">
+          <h3>1:1 Coaching May Be A Good Fit If You:</h3>
+          <ul class="list">
+            <li>Know you need structure</li><li>Have started and stopped too many times</li><li>Want to lose body fat while keeping muscle</li><li>Need accountability from someone who will tell you the truth</li><li>Are ready to stop negotiating with the version of you that keeps quitting</li>
+          </ul>
+        </article>
+        <div style="margin-top:1rem;"><a class="btn btn-primary" href="#coming-soon">1:1 Coaching Application Coming Soon</a></div>
+        <p class="small-note">Application link coming soon. For now, the focus is serving the founding group well and preparing the next phase.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <p class="eyebrow">Coming Soon</p>
+        <h2>The Iron Dad Standard Newsletter.</h2>
+        <p>Soon, this site will become more than a coaching page.</p>
+        <p>The Iron Dad Standard newsletter will cover training, nutrition, fatherhood, discipline, mindset, faith, finances, and building a life your family can be proud of.</p>
+        <p>No fluff. No fake motivation. Just practical tools, hard-earned lessons, and reminders for men who are trying to lead better.</p>
+        <a class="btn btn-primary" href="#coming-soon">Newsletter Coming Soon</a>
+      </div>
+    </section>
+
+    <section class="section future">
+      <div class="container">
+        <p class="eyebrow">The Bigger Vision</p>
+        <h2>What This Is Becoming.</h2>
+        <p>Iron Dad Method is being built in phases.</p>
+        <p>Today, it starts with coaching.</p>
+        <p>Next, it grows into a hub for dads who want to improve their body, habits, leadership, finances, faith, and family life.</p>
+        <p>The long-term vision is simple: build a place where fathers can find structure, tools, coaching, community, and honest reminders to keep raising the standard.</p>
+      </div>
+    </section>
+
+    <section class="section founder">
+      <div class="container">
+        <p class="eyebrow">A Note From Ray</p>
+        <h2>I Built This For Dads Who Know They Have More In Them.</h2>
+        <p>I built Iron Dad Method because I know what it feels like to want more for yourself while carrying real responsibility at home.</p>
+        <p>Work, marriage, kids, bills, stress, fatigue — it is easy for dads to put themselves last and call it sacrifice.</p>
+        <p>But I believe your family does not need a burned-out version of you. They need the strongest, clearest, most disciplined version of you.</p>
+        <p>This is not about perfection. It is about rebuilding your standard one day at a time.</p>
+        <p>If that resonates with you, you are in the right place.</p>
+      </div>
+    </section>
+
+    <section class="section final-cta">
+      <div class="container">
+        <h2>Ready to Raise the Standard?</h2>
+        <p>The May 11 cohort is closed. The next group starts August 10.</p>
+        <p>The next cohort application, 1:1 coaching application, and newsletter are coming soon.</p>
+        <p>Do not wait for perfect timing to become the man you already know you are called to be.</p>
+        <div class="cta-actions">
+          <a class="btn btn-primary" href="#coming-soon">1:1 Coaching Application Coming Soon</a>
+          <a class="btn btn-ghost" href="#coming-soon">August 10 Cohort Application Coming Soon</a>
+          <a class="btn btn-ghost" href="#coming-soon">Newsletter Coming Soon</a>
         </div>
       </div>
     </section>
 
-    <section class="section" id="benefits">
+    <section class="section" id="coming-soon">
       <div class="container">
-        <p class="eyebrow">Benefits</p>
-        <h2>What You’ll Notice in the First 90 Days</h2>
-        <div class="grid grid-2">
-          <article class="card">
-            <ul class="list">
-              <li>Lower body fat and a stronger, more athletic build.</li>
-              <li>More daily energy without relying on caffeine all day.</li>
-              <li>Better sleep and improved stress management.</li>
-              <li>Increased confidence at work, at home, and in your body.</li>
-            </ul>
-          </article>
-          <article class="card">
-            <ul class="list">
-              <li>Simple routines that fit around family commitments.</li>
-              <li>No confusing programs, no extremes, no guesswork.</li>
-              <li>A repeatable system that lasts beyond motivation.</li>
-              <li>Progress you can maintain year-round.</li>
-            </ul>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="founder">
-      <div class="container">
-        <p class="eyebrow">Founder Story</p>
-        <h2>Built by a Dad Who Lived the Same Chaos.</h2>
-        <div class="story">
-          <p>
-            I created Iron Dad Method after becoming a father and realizing my old fitness routines no
-            longer fit my life. Long gym sessions and strict meal plans failed every time reality hit.
-          </p>
-          <p>
-            So I built a better approach: short, focused training, practical nutrition, and consistent
-            accountability. The goal isn’t perfection—it’s progress you can sustain while being present
-            for your family.
-          </p>
-          <p><strong>— Coach Mike, Founder</strong></p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="faq">
-      <div class="container">
-        <p class="eyebrow">FAQ</p>
-        <h2>Common Questions</h2>
-        <div class="grid">
-          <article class="faq-item">
-            <button class="faq-question" type="button">
-              How much time do I need each week?
-              <span>+</span>
-            </button>
-            <div class="faq-answer">
-              Most dads follow a 3–4 day plan with sessions around 30–45 minutes.
-            </div>
-          </article>
-
-          <article class="faq-item">
-            <button class="faq-question" type="button">
-              Do I need a full gym?
-              <span>+</span>
-            </button>
-            <div class="faq-answer">
-              No. The program can be tailored for home workouts, minimal equipment, or full gym access.
-            </div>
-          </article>
-
-          <article class="faq-item">
-            <button class="faq-question" type="button">
-              Is there a strict meal plan?
-              <span>+</span>
-            </button>
-            <div class="faq-answer">
-              No strict meal plan. You’ll get a flexible framework that works with family life and social events.
-            </div>
-          </article>
-
-          <article class="faq-item">
-            <button class="faq-question" type="button">
-              How quickly will I see results?
-              <span>+</span>
-            </button>
-            <div class="faq-answer">
-              Most clients feel better in the first 2–3 weeks and see clear body composition changes within 8–12 weeks.
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section final-cta" id="apply">
-      <div class="container">
-        <p class="eyebrow">Final CTA</p>
-        <h2>Stop Starting Over. Start Building the Body and Energy Your Family Deserves.</h2>
-        <p>
-          If you’re ready for a realistic coaching plan that fits your life as a dad, apply now and
-          let’s build momentum together.
-        </p>
-        <a class="btn btn-primary" href="[PASTE YOUR GOOGLE FORM LINK]">Apply Now</a>
+        <h2>Applications and Newsletter Coming Soon</h2>
+        <p>The founding cohort is now in progress. The next phase is being built with care.</p>
+        <p>Soon, this page will include:</p>
+        <ul class="list">
+          <li>1:1 coaching application</li>
+          <li>August 10 cohort application</li>
+          <li>Iron Dad Standard newsletter signup</li>
+        </ul>
+        <p style="margin-top:1rem;">For now, check back soon and follow along as the first group goes through the process.</p>
       </div>
     </section>
   </main>
 
-  <footer>
-    © <span id="year"></span> Iron Dad Method. All rights reserved.
-  </footer>
-
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    document.querySelectorAll('.faq-question').forEach((button) => {
-      button.addEventListener('click', () => {
-        const item = button.closest('.faq-item');
-        item.classList.toggle('active');
-      });
-    });
-  </script>
+  <footer>© <span id="year"></span> Iron Dad Method. All rights reserved.</footer>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>
